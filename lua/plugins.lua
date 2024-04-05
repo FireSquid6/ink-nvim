@@ -101,10 +101,10 @@ require("lazy").setup({
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "tsx", "typescript" },
         sync_install = false,
         highlight = { enable = true },
-        indent = { enable = false },
+        indent = { enable = true },
       })
 
     end,
@@ -261,7 +261,7 @@ require("lazy").setup({
     },
   },
   {
-    "yioneko/nvim-yati",
+    "firesquid6/nvim-yati",
     config = function()
       require("nvim-treesitter.configs").setup {
         yati = {
@@ -274,10 +274,12 @@ require("lazy").setup({
           --   "asis": use current indent as-is
           --   "cindent": see `:h cindent()`
           -- Or a custom function return the final indent result.
-          default_fallback = "auto"
+          default_fallback = "auto",
+          suppress_conflict_warning = false,
         },
         indent = {
-          enable = false -- disable builtin indent module
+          enable = true, -- disable builtin indent module
+          disable = { "html", "javascript", "typescript", "tsx", "python" },
         }
       }
     end,
