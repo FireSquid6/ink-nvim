@@ -4,7 +4,7 @@ require("lazy").setup({
     event = "VeryLazy",
     init = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 500
+      vim.o.timeoutlen = 200
     end,
 
   },
@@ -213,5 +213,80 @@ require("lazy").setup({
   },
 
   "nvim-tree/nvim-web-devicons",
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = true,
+  },
+  {
+    "startup-nvim/startup.nvim",
+    config = function()
+      require("startup").setup({
+        theme = "evil",
+      })
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "tokyonight",
+          section_separators = { "", "" },
+          component_separators = { "", "" },
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch" },
+          lualine_c = { "filename" },
+          lualine_x = { "encoding", "fileformat", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
+      })
+    end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+    	"LazyGit",
+    	"LazyGitConfig",
+    	"LazyGitCurrentFile",
+    	"LazyGitFilter",
+    	"LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "yioneko/nvim-yati",
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        yati = {
+          enable = true,
+          -- Whether to enable lazy mode (recommend to enable this if bad indent happens frequently)
+          default_lazy = true,
 
+          -- Determine the fallback method used when we cannot calculate indent by tree-sitter
+          --   "auto": fallback to vim auto indent
+          --   "asis": use current indent as-is
+          --   "cindent": see `:h cindent()`
+          -- Or a custom function return the final indent result.
+          default_fallback = "auto"
+        },
+        indent = {
+          enable = false -- disable builtin indent module
+        }
+      }
+    end,
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
+  },
 })
