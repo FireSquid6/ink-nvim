@@ -3,7 +3,7 @@
 local wk = require("which-key")
 
 local mappings = {
-  {"n", "<leader>w", "<cmd>w<cr>", "Write File"},
+  {"n", "<leader>w", "<cmd>wa<cr>", "Write File"},
   {"n", "<leader>q", "<cmd>q<cr>", "Quit File"},
   -- Telescope
   {"n", "<leader>ff", "<cmd>Telescope find_files<cr>", "Find Files"},

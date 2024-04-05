@@ -19,21 +19,17 @@ require("lazy").setup({
   },
 
 
-  {
-    "neovim/nvim-lspconfig",
-  },
+  "neovim/nvim-lspconfig",
   {
     "williamboman/mason.nvim",
     init = function()
       require("mason").setup()
     end,
   },
-  {
-    "williamboman/mason-lspconfig.nvim"
-  },
-  {
-    "mfussenegger/nvim-lint",
-  },
+
+  "williamboman/mason-lspconfig.nvim",
+  "mfussenegger/nvim-lint",
+
   {
     "mhartington/formatter.nvim",
     config = function()
@@ -114,7 +110,108 @@ require("lazy").setup({
     end,
 
   },
-  {
 
-  }
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    
+    config = function()
+      require("ibl").setup()
+    end
+  },
+
+  {
+    "tpope/vim-surround",
+    event = "InsertEnter",
+  },
+  {
+    "wakatime/vim-wakatime",
+    event = "InsertEnter",
+  },
+  {
+    "andweeb/presence.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("presence").setup({
+        auto_update = true,
+        neovim_image_text = "Using astro nvim",
+      })
+    end
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+          panel = {
+            enabled = true,
+            auto_refresh = false,
+            keymap = {
+              jump_prev = "[[",
+              jump_next = "]]",
+              accept = "<CR>",
+              refresh = "gr",
+              open = "<M-CR>"
+            },
+            layout = {
+              position = "bottom", -- | top | left | right
+              ratio = 0.4
+            },
+          },
+          suggestion = {
+            enabled = true,
+            auto_trigger = true,
+            debounce = 75,
+            keymap = {
+              accept = "<C-l>",
+              accept_word = false,
+              accept_line = false,
+              next = "<M-]>",
+              prev = "<M-[>",
+              dismiss = "<C-]>",
+            },
+          },
+          filetypes = {
+            yaml = false,
+            markdown = false,
+            help = false,
+            norg = false,
+            gitcommit = false,
+            gitrebase = false,
+            hgcommit = false,
+            svn = false,
+            cvs = false,
+            ["."] = false,
+          },
+          copilot_node_command = 'node', -- Node.js version must be > 16.x
+          server_opts_overrides = {},
+        })
+    end,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  },
+
+  "nvim-tree/nvim-web-devicons",
+
 })
