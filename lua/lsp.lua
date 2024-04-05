@@ -1,4 +1,5 @@
-local lspconfig = require('lspconfig')
+local lspconfig = require("lspconfig")
+local util = require("lspconfig.util")
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
 lspconfig.rust_analyzer.setup {
@@ -6,6 +7,9 @@ lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {},
   },
+}
+lspconfig.gdscript.setup {
+  root_dir = util.root_pattern("project.godot")
 }
 
 

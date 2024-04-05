@@ -266,6 +266,7 @@ require("lazy").setup({
       require("nvim-treesitter.configs").setup {
         yati = {
           enable = true,
+          disable = { "gdscript" },
           -- Whether to enable lazy mode (recommend to enable this if bad indent happens frequently)
           default_lazy = true,
 
@@ -291,4 +292,6 @@ require("lazy").setup({
     -- use opts = {} for passing setup options
     -- this is equalent to setup({}) function
   },
+  {
+
 })
