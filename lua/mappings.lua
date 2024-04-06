@@ -19,6 +19,7 @@ wk.register({
 
     r = { "<cmd> Telescope registers<cr>", "Search Registers"},
   },
+  e = { "<cmd>Telescope file_browser<cr>", "File Explorer" },
   w = { "<cmd>wa<cr>", "Write Files"},
   q = { "<cmd>q<cr>", "Quit Files"},
   c = { "<cmd>bdelete<cr>", "Close Buffer"},
@@ -31,6 +32,7 @@ wk.register({
     f = { "<cmd>4ToggleTerm direction=float size=20<cr>", "Floating Terminal"}
   },
   g = { "<cmd>LazyGit<cr>", "LazyGit" },
+  h = { "<cmd>nohlsearch<cr>", "No Highlight" },
 }, { prefix = "<leader>"})
 
 vim.keymap.set('t', "<C-n>", "<C-\\><C-n>")

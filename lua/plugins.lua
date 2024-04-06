@@ -13,24 +13,27 @@ require("lazy").setup({
   "nvim-lua/popup.nvim",
   "nvim-lua/plenary.nvim",
   {
-    "nvim-telescope/telescope.nvim",
-    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
-    tag = "v1.6.0",
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      local telescope = require("telescope")
-      telescope.setup({
+      require("telescope").setup({
+        defaults = {
+          layout_config = {
+            prompt_position = "top",
+          },
+        },
         pickers = {
           find_files = {
             hidden = true,
+            follow = true,
           },
           live_grep = {
             hidden = true,
           },
-        },
+        }
       })
-    end
+    end,
   },
-
 
   "neovim/nvim-lspconfig",
   {
@@ -328,4 +331,7 @@ require("lazy").setup({
       })
     end,
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+  }
 })
