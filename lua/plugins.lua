@@ -16,6 +16,19 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
     tag = "v1.6.0",
+    config = function()
+      local telescope = require("telescope")
+      telescope.setup({
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+          live_grep = {
+            hidden = true,
+          },
+        },
+      })
+    end
   },
 
 

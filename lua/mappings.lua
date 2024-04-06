@@ -10,8 +10,14 @@ wk.register({
     f = { "<cmd>Telescope find_files<cr>", "Find Files"},
     w = { "<cmd>Telescope live_grep<cr>", "Find Words"},
     b = { "<cmd>Telescope buffers<cr>", "Find Buffers"},
-    l = { "<cmd>Telescope lsp_document_symbols<cr>", "Search LSP"},
     c = { "<cmd>Telescope commands<cr>", "Search Commands"},
+    t = { "<cmd>Telescope treesitter<cr>", "Search Treesitter"},
+
+    l = { "<cmd>Telescope lsp_document_symbols<cr>", "Search LSP Symbols"},
+    o = { "<cmd>Telescope lsp_outgoing_calls<cr>", "Search Outgoing Calls"},
+    i = { "<cmd>Telescope lsp_incoming_calls<cr>", "Search Incoming Calls"},
+
+    r = { "<cmd> Telescope registers<cr>", "Search Registers"},
   },
   w = { "<cmd>wa<cr>", "Write Files"},
   q = { "<cmd>q<cr>", "Quit Files"},
@@ -33,6 +39,8 @@ vim.keymap.set('t', "<C-j>", "<C-\\><C-n><C-w>j")
 vim.keymap.set('t', "<C-k>", "<C-\\><C-n><C-w>k")
 vim.keymap.set('t', "<C-l>", "<C-\\><C-n><C-w>l")
 
+vim.keymap.set("v", "<leader>c", '"+y', { desc = "Copy to clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
