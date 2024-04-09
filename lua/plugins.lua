@@ -23,10 +23,6 @@ require("lazy").setup({
           },
         },
         pickers = {
-          find_files = {
-            hidden = true,
-            follow = true,
-          },
           live_grep = {
             hidden = true,
           },
@@ -333,5 +329,8 @@ require("lazy").setup({
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-  }
+  },
+  {
+    "f-person/git-blame.nvim",
+  },
 })
