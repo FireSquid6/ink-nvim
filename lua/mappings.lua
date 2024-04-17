@@ -44,6 +44,8 @@ vim.keymap.set('t', "<C-l>", "<C-\\><C-n><C-w>l")
 vim.keymap.set("v", "<leader>c", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
+
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -53,24 +55,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 
     wk.register({
       D = { vim.lsp.buf.declaration, "Go to Declaration", opts },
       d = { vim.lsp.buf.definition, "Go to Definition", opts },
       i = { vim.lsp.buf.implementation, "Go to Implementation", opts },
       r = { vim.lsp.buf.references, "Go to References", opts },
+      t = { vim.lsp.buf.type_definition, "Go to Type Definition", opts },
+
     }, { prefix = "g" })
 
+
     wk.register({
-      l = {
-        name = "LSP",
-        a = { vim.lsp.buf.code_action, "Code Action", opts },
-        n = { vim.lsp.buf.rename, "Rename", opts },
-        f = { vim.lsp.buf.formatting, "Format", opts },
-        d = { vim.lsp.diagnostic.show_line_diagnostics, "Line Diagnostics", opts },
-        t = { vim.lsp.buf.type_definition, "Type Definition", opts },
-      }
-    }, { prefix = "<leader>" })
+      name = "LSP",
+      a = { vim.lsp.buf.code_action, "Code Action", opts },
+      n = { vim.lsp.buf.rename, "Rename", opts },
+      f = { vim.lsp.buf.formatting, "Format", opts },
+
+      h = { vim.lsp.buf.hover, "Hover", opts },
+      d = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Line Diagnostics", opts },
+    }, { prefix = "<leader>l" })
   end,
 })
