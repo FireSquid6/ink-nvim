@@ -1,9 +1,23 @@
-
-
 local wk = require("which-key")
+local harpoon = require('harpoon')
+local conf = require('telescope.config').values
 
--- LSP keybindings are in lua/lsp.lua
---
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
 wk.register({
   f = {
     name = "Find",
@@ -31,9 +45,17 @@ wk.register({
     ["3"] = { "<cmd>3ToggleTerm direction=horizontal size=20<cr>", "Bottom Terminal 3"},
     f = { "<cmd>4ToggleTerm direction=float size=20<cr>", "Floating Terminal"}
   },
+  s = {
+    u = { function() toggle_telescope(harpoon:list()) end, "Harpoon"},
+    a = { function() harpoon:list():add() end, "Add to Harpoon"},
+  },
+
   g = { "<cmd>LazyGit<cr>", "LazyGit" },
   h = { "<cmd>nohlsearch<cr>", "No Highlight" },
 }, { prefix = "<leader>"})
+
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
 
 vim.keymap.set('t', "<C-n>", "<C-\\><C-n>")
 vim.keymap.set('t', "<C-h>", "<C-\\><C-n><C-w>h")
@@ -43,6 +65,8 @@ vim.keymap.set('t', "<C-l>", "<C-\\><C-n><C-w>l")
 
 vim.keymap.set("v", "<leader>c", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+
+
 
 
 
