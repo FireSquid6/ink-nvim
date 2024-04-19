@@ -2,6 +2,9 @@ local wk = require("which-key")
 local harpoon = require('harpoon')
 local conf = require('telescope.config').values
 
+
+vim.keymap.set({"i", "n"}, "<esc>", "<cmd>noh<cr><esc>")
+
 local function toggle_telescope(harpoon_files)
     local file_paths = {}
     for _, item in ipairs(harpoon_files.items) do
@@ -51,7 +54,6 @@ wk.register({
   },
 
   g = { "<cmd>LazyGit<cr>", "LazyGit" },
-  h = { "<cmd>nohlsearch<cr>", "No Highlight" },
 }, { prefix = "<leader>"})
 
 vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
