@@ -15,8 +15,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.opt.smartindent = false
 
-require("plugins")
 require("options")
+require("plugins")
 require("mappings")
 require("lsp")
 

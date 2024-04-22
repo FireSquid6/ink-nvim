@@ -1,4 +1,3 @@
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -9,3 +8,6 @@ vim.opt.expandtab = true
 vim.opt.termguicolors = true
 
 vim.opt.ignorecase = true
+
+vim.opt.cmdheight = 0
+

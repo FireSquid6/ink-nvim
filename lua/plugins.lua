@@ -242,23 +242,18 @@ require("lazy").setup({
   },
   {
     "nvim-lualine/lualine.nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require("lualine").setup({
-        options = {
-          theme = "tokyonight",
-          section_separators = { "", "" },
-          component_separators = { "", "" },
-        },
-        sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "branch" },
-          lualine_c = { "filename" },
-          lualine_x = { "encoding", "fileformat", "filetype" },
-          lualine_y = { "progress" },
-          lualine_z = { "location" },
-        },
-      })
+      require('lualine').setup()
     end,
+  },
+  {
+    "b0o/incline.nvim",
+    config = function()
+      require("incline").setup()
+    end,
+    event = "VeryLazy",
+
   },
   {
     "kdheepak/lazygit.nvim",
@@ -280,7 +275,7 @@ require("lazy").setup({
       require("nvim-treesitter.configs").setup {
         yati = {
           enable = true,
-          disable = { "gdscript", "lua" },
+          disable = { "gdscript", "json", "lua" },
           -- Whether to enable lazy mode (recommend to enable this if bad indent happens frequently)
           default_lazy = true,
 
@@ -321,7 +316,6 @@ require("lazy").setup({
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.diagnostics.eslint,
           null_ls.builtins.completion.spell,
         },
       })
