@@ -11,3 +11,4 @@ vim.opt.ignorecase = true
 
 vim.opt.cmdheight = 0
 
+vim.api.nvim_set_option("clipboard", "unnamed")
