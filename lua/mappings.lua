@@ -30,15 +30,14 @@ wk.register({
     c = { "<cmd>Telescope commands<cr>", "Search Commands"},
 
     l = { "<cmd>Telescope lsp_document_symbols<cr>", "Search LSP Symbols"},
+    s = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Search LSP Workspace Symbols"},
     o = { "<cmd>Telescope lsp_outgoing_calls<cr>", "Search Outgoing Calls"},
     i = { "<cmd>Telescope lsp_incoming_calls<cr>", "Search Incoming Calls"},
 
     r = { "<cmd> Telescope registers<cr>", "Search Registers"},
     m = { "<cmd> Telescope marks<cr>", "Search Marks"},
 
-    s = { "<cmd>Telescope tags<cr>", "Search Tags"},
     ["/"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Search Current Buffer"},
-    t = { "<cmd>Telescope current_buffer_tags<cr>", "Search Current Buffer Tags"},
 
   },
   e = { "<cmd>Telescope file_browser<cr>", "File Explorer" },
