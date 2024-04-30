@@ -11,6 +11,7 @@ lspconfig.rust_analyzer.setup {
 lspconfig.gdscript.setup {
   root_dir = util.root_pattern("project.godot")
 }
+lspconfig.gopls.setup {}
 
 
 local cmp = require('cmp')
