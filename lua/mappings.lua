@@ -4,6 +4,10 @@ local conf = require('telescope.config').values
 
 
 vim.keymap.set({"i", "n"}, "<esc>", "<cmd>noh<cr><esc>")
+vim.keymap.set({"i", "n"}, "<C-h>", "<C-w>h")
+vim.keymap.set({"i", "n"}, "<C-j>", "<C-w>j")
+vim.keymap.set({"i", "n"}, "<C-k>", "<C-w>k")
+vim.keymap.set({"i", "n"}, "<C-l>", "<C-w>l")
 
 local function toggle_telescope(harpoon_files)
     local file_paths = {}
