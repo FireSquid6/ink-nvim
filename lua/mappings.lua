@@ -57,6 +57,7 @@ wk.register({
     f = { "<cmd>4ToggleTerm direction=float size=20<cr>", "Floating Terminal"}
   },
   s = {
+    name = "Harpoon",
     u = { function() toggle_telescope(harpoon:list()) end, "Harpoon"},
     a = { function() harpoon:list():add() end, "Add to Harpoon"},
   },
