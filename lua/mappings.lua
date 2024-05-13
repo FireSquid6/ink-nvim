@@ -76,10 +76,6 @@ vim.keymap.set('t', "<C-l>", "<C-\\><C-n><C-w>l")
 vim.keymap.set("v", "<leader>c", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
-
-
-
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -110,4 +106,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
       d = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Line Diagnostics", opts },
     }, { prefix = "<leader>l" })
   end,
+})
+
+
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+augroup("__formatter__", { clear = true })
+autocmd("BufWritePost", {
+	group = "__formatter__",
+	command = ":FormatWrite",
 })

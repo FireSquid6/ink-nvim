@@ -21,3 +21,5 @@ require("mappings")
 require("lsp")
 
 vim.cmd 'colorscheme tokyonight-night'
+
+
