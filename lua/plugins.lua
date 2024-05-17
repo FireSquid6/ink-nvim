@@ -21,6 +21,7 @@ require("lazy").setup({
 					layout_config = {
 						prompt_position = "top",
 					},
+					file_ignore_patterns = { "node_modules", ".git" },
 				},
 				pickers = {
 					live_grep = {
